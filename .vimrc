@@ -1,9 +1,9 @@
 "this is the plugins area
 call plug#begin('~/.vim/plugged')
 
-"Color scheme gotham! 
+"Color scheme solarized! 
 Plug 'altercation/vim-colors-solarized'
-
+Plug 'bling/vim-airline'
 "ending the plugin area
 call plug#end()
 :set cpoptions+=$ " This adds the dollar sign at the end of the word you are editing. 
@@ -20,8 +20,17 @@ set lazyredraw		" a good explanation on dougblack.io/words/a-good-vimrc.html
 set wildmenu		" visual autocomplete for command menu
 filetype indent on	" load filtype-specific indent files
 set colorcolumn=80  " show the vertical bar thing while editing PEP-8!
+set tw=79           " set the width of the file (Automatically creates a new line when you hit the boundary
 " ######################
 " TABS AND INDENTS! 
 set tabstop=4		" number of visual spaces per TAB
 set softtabstop=4	" number of spaces in tab when editing
 set expandtab		" tabs are spaces
+" To enable the vim-airline status bar, without this it only works with 2 or
+" more splits! 
+set laststatus=2
+" airline options
+let g:airline_powerline_fonts=1
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:airline_theme='base16'
