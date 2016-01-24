@@ -3,7 +3,10 @@ call plug#begin('~/.vim/plugged')
 
 "Color scheme solarized! 
 Plug 'altercation/vim-colors-solarized'
+" Status Bar
 Plug 'bling/vim-airline'
+" Auto PEP-8
+Plug '/tell-k/vim-autopep8'
 "ending the plugin area
 call plug#end()
 :set cpoptions+=$ " This adds the dollar sign at the end of the word you are editing. 
@@ -26,11 +29,21 @@ set tw=79           " set the width of the file (Automatically creates a new lin
 set tabstop=4		" number of visual spaces per TAB
 set softtabstop=4	" number of spaces in tab when editing
 set expandtab		" tabs are spaces
+set shiftwidth=4    " size of an "indent"
+set smarttab        " make tab insert indents instead of a tab at the start
 " To enable the vim-airline status bar, without this it only works with 2 or
 " more splits! 
 set laststatus=2
-" airline options
+" airline (status) options
 let g:airline_powerline_fonts=1
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_theme='base16'
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun  
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+
