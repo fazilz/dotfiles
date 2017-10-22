@@ -3,8 +3,8 @@ call plug#begin('~/.vim/plugged')
 
 " Status BarPlug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline'
+Plug 'icymind/NeoSolarized'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'altercation/vim-colors-solarized'
 
 " Auto PEP-8
 Plug '/tell-k/vim-autopep8'
@@ -14,8 +14,10 @@ call plug#end()
 " THIS IS THE UI AREA!!!!!
 " ############################
 set termguicolors
-syntax enable 		" Color changed to dark version of solarized.
-set background=dark
+set syntax=enable
+set background=light
+colorscheme NeoSolarized
+"let  g:solarized_termcolors=256
 set number 	    	" enabling the side numbers
 set cursorline		" highlight current line
 set showcmd 		" show the last used in the bottom right
@@ -52,4 +54,9 @@ fun! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfun
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+
+"if &term =~# '^screen'
+let &t_8f = "[38;2;%lu;%lu;%lum"
+let &t_8b = "[48;2;%lu;%lu;%lum"
+"endif
 
