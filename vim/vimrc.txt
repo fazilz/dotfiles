@@ -13,10 +13,9 @@ call plug#end()
 :set cpoptions+=$ " This adds the dollar sign at the end of the word you are editing.
 " THIS IS THE UI AREA!!!!!
 " ############################
-let g:solarized_termcolors=256
-"set t_Co=256
-colorscheme solarized
+set termguicolors
 syntax enable 		" Color changed to dark version of solarized.
+set background=dark
 set number 	    	" enabling the side numbers
 set cursorline		" highlight current line
 set showcmd 		" show the last used in the bottom right
@@ -37,7 +36,6 @@ set guifont=Monaco:h16
 " airline (status) options
 set laststatus=2
 let g:airline_theme='base16'
-
 " C-C++ autocomplete
 let g:clang_library_path='/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
 " makes sure the preview scratch window never opens
